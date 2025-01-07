@@ -1,34 +1,79 @@
 {
-    "name": "wisp-x/lsky-pro",
-    "description": "Lsky Pro, your photo album on the cloud.",
+    "name": "laravel/laravel",
     "type": "project",
-    "keywords": [
-        "lsky",
-        "lsky Pro"
-    ],
-    "homepage": "https://www.lsky.pro",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
     "license": "GPL-3.0",
-    "authors": [
-        {
-            "name": "Wisp X",
-            "email": "1591788658@qq.com"
-        }
-    ],
     "require": {
-        "php": ">=5.6.0",
-        "topthink/framework": "5.1.*",
-        "topthink/think-captcha": "^2.0",
-        "aliyuncs/oss-sdk-php": "^2.3",
-        "qiniu/php-sdk": "^7.2",
-        "upyun/sdk": "^3.3",
-        "qcloud/cos-sdk-v5": "^1.2",
-        "topthink/think-image": "^1.0",
-        "phpmailer/phpmailer": "^6.0",
-        "nicolab/php-ftp-client": "^1.5"
+        "php": "^8.0",
+        "alibabacloud/green": "^1.8",
+        "doctrine/dbal": "^3.3",
+        "erusev/parsedown": "^1.7",
+        "fruitcake/laravel-cors": "^2.0.5",
+        "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^2.7",
+        "intervention/imagecache": "^2.5",
+        "laravel/breeze": "^1.8",
+        "laravel/framework": "^9.0",
+        "laravel/octane": "^1.2",
+        "laravel/sanctum": "^2.14",
+        "laravel/tinker": "^2.7",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "league/flysystem-ftp": "^3.0",
+        "league/flysystem-sftp-v3": "^3.0",
+        "league/flysystem-webdav": "^3.0",
+        "overtrue/flysystem-cos": "^5.0",
+        "overtrue/flysystem-qiniu": "^3.0",
+        "tencentcloud/ims": "^3.0",
+        "wispx/flysystem-upyun": "^1.0",
+        "zing/flysystem-oss": "^2.1"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0",
+        "barryvdh/laravel-debugbar": "^3.6"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "application"
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
